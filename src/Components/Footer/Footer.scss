@@ -1,0 +1,73 @@
+@import '../../Utils/mixins.scss';
+
+
+
+.footer{
+  @include pading-inline;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  min-width: 450px;
+  padding-top: 30px;
+
+
+
+
+  @include on-Desctop{
+    display: grid;
+    padding-top: 100px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+
+  }
+
+  &__title{
+    text-align: center;
+    grid-column: span 2;
+  }
+
+
+
+
+};
+
+
+
+
+.footer__contacts{
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  min-width: 450px;
+
+
+
+  @include on-Desctop{
+    padding-inline-start: 50px;
+  }
+
+  &-label{
+    color: gray;
+    
+  }
+  
+
+
+
+}
+
+
+.footer__link{
+  text-decoration: none;
+  color: #000;
+  
+}
+
+
+.divula{
+  height: 200px;
+  width: 100%;
+  
+}

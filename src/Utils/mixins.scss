@@ -1,0 +1,38 @@
+@mixin on-Tablet{
+  @media(min-width: 640px){
+    @content;
+  }
+};
+
+@mixin on-Desctop{
+  @media(min-width: 1024px){
+    @content;
+  }
+}
+
+
+
+@mixin pading-inline{
+  padding-inline: 24px;
+
+  @include on-Tablet{
+      padding-inline: 36px;
+  }
+
+
+  @include on-Desctop{
+    padding-inline: 48px;
+  }
+}
+
+
+
+
+@mixin website-text{
+  color: #FFFFFF;
+  text-shadow: 
+    -1px -1px 0 black,  
+     1px -1px 0 black,  
+    -1px  1px 0 black,  
+     1px  1px 0 black;
+}

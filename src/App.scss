@@ -1,0 +1,16 @@
+
+@import './Utils/mixins.scss';
+
+
+
+*{
+  box-sizing: border-box;
+}
+#root{
+  display: flex;
+  flex-direction: column;  
+  width: 100%;
+  
+
+}
+
