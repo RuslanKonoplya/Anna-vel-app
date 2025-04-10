@@ -12,9 +12,14 @@
   &__title{
     
     text-align: center;
-    font-size: 36px;
+    font-size: 24px;
     
-    width: 100%
+    width: 100%;
+
+
+    @include on-Tablet{
+      font-size: 36px;
+    }
   }
   
 
