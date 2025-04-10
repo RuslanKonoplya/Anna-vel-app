@@ -5,8 +5,7 @@ $main-text-color--: #FFFFFF;
 
 .nav {
   
-  top: 0;
-  z-index: 10;
+ 
   width: 100%;
   height: 80px;
   display: flex;
@@ -14,7 +13,7 @@ $main-text-color--: #FFFFFF;
   justify-content: space-between;
   opacity: 1;
   box-sizing: border-box;
-  padding-right: 30px;
+  min-width: 450px;
   transition-duration: 1s;
   
 
@@ -42,6 +41,8 @@ $main-text-color--: #FFFFFF;
     font-size: 20px;
     gap: 10px;
     display: flex;
+    margin-right: 20px;
+
     @include website-text;
      white-space: nowrap;
 
@@ -65,7 +66,7 @@ $main-text-color--: #FFFFFF;
     @include on-Desctop{
     display: block;
     background-color: transparent;
-    
+    margin-right: 20px;
     width:210px;
     height: 40px;
     border-radius: 4px;
