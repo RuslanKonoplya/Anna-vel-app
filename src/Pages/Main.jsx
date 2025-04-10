@@ -4,6 +4,7 @@ import { Header } from '../Components/Header/Header';
 import './Main.scss'
 import { MainContent } from '../Components/MainContent/MainContent';
 import Footer from '../Components/Footer/Footer';
+import FollowUs from '../Components/FollowUs/FollowUs';
 
 
 
@@ -14,9 +15,11 @@ function Main() {
       
       <Header />
       <MainContent />
-      <Footer/>
+      <Footer />
+      <FollowUs/>
+      
 
-      <div className='divula'></div>
+     
 
 
       
