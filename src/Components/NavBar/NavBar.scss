@@ -7,20 +7,33 @@ $main-text-color--: #FFFFFF;
   
  
   width: 100%;
-  height: 80px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   opacity: 1;
   box-sizing: border-box;
-  min-width: 450px;
+ 
   transition-duration: 1s;
+
+  @include on-Tablet{
+    height: 80px;
+  }
   
 
 
   // .nav__logo
 
- 
+  &__logo{
+
+    width: 50px;
+    height: 50px;
+
+    @include on-Tablet{
+      width:80px; 
+      height:80px;
+    }
+  }
 
   // .nav__p
 
@@ -38,7 +51,7 @@ $main-text-color--: #FFFFFF;
   }
   &__p {
     color:$main-text-color--;
-    font-size: 20px;
+    font-size: 12px;
     gap: 10px;
     display: flex;
     margin-right: 20px;

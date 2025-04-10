@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 30px;
-  min-width: 450px;
+  
 
 
 
@@ -29,7 +29,7 @@
   &__title {
     justify-self: flex-start;
     @include website-text;
-     font-size: 24px;
+     font-size: 15px;
      animation: scaleAnimation 5s ease-in-out infinite;
      
      @keyframes scaleAnimation {
@@ -65,8 +65,12 @@
 
   &__sheudule {
 
+
+
+
+
     @include website-text;
-     font-size: 20px;
+     font-size: 15px;
 
      @include on-Tablet{
       font-size: 24px;
