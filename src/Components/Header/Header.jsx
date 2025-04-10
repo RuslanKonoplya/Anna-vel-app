@@ -3,10 +3,10 @@ import './Header.scss';
 import { useState, useEffect } from 'react';
 
 const images = [
-  './images/Header_images/pexels-heyho-5998120.jpg',
-  './images/Header_images/pexels-heyho-6283972.jpg',
-  './images/Header_images/pexels-heyho-6758773.jpg',
-  './images/Header_images/pexels-heyho-6908367.jpg',
+  '/images/Header_images/pexels-heyho-5998120.jpg',
+  '/images/Header_images/pexels-heyho-6283972.jpg',
+  '/images/Header_images/pexels-heyho-6758773.jpg',
+  '/images/Header_images/pexels-heyho-6908367.jpg',
 ];
 const preloadImages = (imageArray) => {
   imageArray.forEach((src) => {
