@@ -1,0 +1,136 @@
+@import '../../Utils/mixins.scss';
+
+.section-services{
+  display: flex;
+  flex-direction: column-reverse; 
+
+  @include on-Desctop {
+    flex-direction: row; 
+  }
+};
+
+
+
+.left,
+.rigth {
+  width: 100%; 
+  aspect-ratio: 1 / 1; 
+  box-sizing: border-box; 
+  
+  min-width: 450px; 
+
+  @include on-Desctop {
+    width: 50%; 
+    
+  }
+}
+
+
+
+.left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+
+  &__content {
+    width: 50%; 
+    aspect-ratio: 1 / 1; 
+    box-sizing: border-box;
+    animation: scaleAnimation 5s ease-in-out infinite;
+    
+
+    @keyframes scaleAnimation {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9); /* Зменшуємо */
+      }
+      100% {
+        transform: scale(1); /* Повертаємо до нормального розміру */
+      }
+    }
+
+
+  }
+
+  @include on-Desctop {
+    width: 50%; 
+    min-width: 450px; 
+  }
+}
+
+
+
+.left__content:nth-child(1) {
+  background-image: url(../../../public/Images/pexels-pixabay-261621.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.left__content:nth-child(2) {
+  background-image: url(../../../public/Images/Meblibro.jpg);
+  background-size: contain;
+
+}
+
+
+.left__content:nth-child(3) {
+  
+  background-size: cover;
+}
+
+
+.left__content:nth-child(4) {
+ background-image: url(../../../public/Images/pexels-cottonbro-4108715.jpg);
+  background-size: cover;
+  
+
+}
+
+
+.rigth__p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding-inline: 20px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1s;
+
+  @include on-Tablet{
+    font-size: 24px;
+  }
+
+
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+}
+
+
+
+
+
+
+.rigth__table li{
+
+  font-size: 18px;
+  text-transform: uppercase;
+
+  @include on-Tablet{
+    font-size: 24px;
+
+  }
+
+
+}

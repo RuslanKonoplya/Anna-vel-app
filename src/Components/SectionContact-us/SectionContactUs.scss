@@ -1,0 +1,109 @@
+
+@import '../../Utils/mixins.scss';
+
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  
+  font-size: 14px;
+
+
+
+  @include on-Desctop{
+    padding-inline-end: 80px;
+  }
+
+
+
+  
+
+  &__input-name {
+   
+    align-items: center;
+    height: 48px;
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 400;
+    
+    padding: 0 16px;
+
+    &:hover {
+      border: 1px solid #dbdbdb;
+    }
+
+    &:focus {
+      border: 2px solid #f98921;
+      outline: none;
+    }
+  }
+
+  &__input-phone {
+    
+    align-items: center;
+    height: 48px;
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.15px;
+    padding: 0 16px;
+
+    &:hover {
+      border: 1px solid #dbdbdb;
+    }
+
+    &:focus {
+      border: 2px solid #f98921;
+      outline: none;
+    }
+
+    
+  }
+
+  &__input-message {
+    padding: 14px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    resize: none;
+    
+    font-size: 14px;
+    outline: none;
+    height: 148px;
+  }
+
+  &__button {
+    height: 36px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: #00a046;
+    color: white;
+
+
+    &:hover{
+      background-color: #00b455;
+    };
+
+
+    &:active{
+      background-color: #007c35;
+      transform: scale(0.97);
+    }
+
+    @include on-Desctop{
+      width: 100%;
+      display: block;
+      
+    }
+}
+
+
+
+}

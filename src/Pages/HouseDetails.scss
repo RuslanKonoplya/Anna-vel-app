@@ -1,0 +1,29 @@
+
+
+
+@import '../Utils/mixins.scss';
+
+
+.house{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include pading-inline;
+
+
+
+
+
+
+  &__img{
+    width: 500px;
+    height: 500px;
+  }
+
+
+}
+
+
+
