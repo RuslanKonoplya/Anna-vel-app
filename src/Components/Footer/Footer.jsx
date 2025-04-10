@@ -36,7 +36,7 @@ function Footer() {
             </a>
           </div>
 
-          <div className="footer__contact-adress">
+          <div className="footer__contact-adress" >
               <span className="footer__contacts-label">Адреса:</span>
              
                <address>
@@ -49,7 +49,8 @@ function Footer() {
                  rel="noopener noreferrer"
              className="footer__link"
            >
-           бульвар Незалежності, 39<br />
+              бульвар Незалежності, 39<br />
+              3 поверх, 8 офіс <br />
            Бровари, Київська область<br />
            07400
          </a>
