@@ -6,7 +6,7 @@ export function NavBar({ styles }) {
   return (
     <nav className="nav" style={styles}>
       <a href="/">
-        <img src="./images/ANNA VEL-Logo.png" alt="Logo" className="nav__logo" width="80px" height="80px"/>
+        <img src="/images/ANNA VEL-Logo.png" alt="Logo" className="nav__logo" width="80px" height="80px"/>
       </a>
       
       <p className="nav__p">
