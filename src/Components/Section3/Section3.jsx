@@ -1,14 +1,34 @@
-import houses from '../../Houses/Houses.json';
+
 import './Section3.scss';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+
+
+
 
 
 function Section3() {
   
-  const slisedHouse = houses.slice(0, 3);
-  const [visibleHouse, setVisibleHouse] = useState(slisedHouse);
+  const [houses, setHouses] = useState([]);
+  const [visibleHouse, setVisibleHouse] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    fetch('https://anna-vell-backend-production.up.railway.app/houses')
+      .then(res => res.json())
+      .then(data => {
+        setHouses(data);
+        setVisibleHouse(data.slice(0, 3));
+      })
+      .catch(err => {
+        console.error('Помилка при завантаженні будинків:', err);
+      });
+  }, []);
+
+
+
+  console.log(houses)
 
   return (
     <section className='section__houses'>
@@ -19,7 +39,10 @@ function Section3() {
       <div className='article__houses'>
       {visibleHouse.map((house) => (
       
-      <Link to={`/object/${house.id}`} key={house.id} className="house-card">
+        <Link to={`/object/${house.id}`} key={house.id} className="house-card">
+          
+
+          
     <img src={house.imageUrl} alt={house.title} className="house-card__image" />
     <div className="house-card__content">
       <h2 className="house-card__title">{house.title}</h2>
