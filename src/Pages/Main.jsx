@@ -16,7 +16,10 @@ function Main() {
       <Header />
       <MainContent />
       <Footer />
-      <FollowUs/>
+      <FollowUs />
+      
+      
+
       
 
      
