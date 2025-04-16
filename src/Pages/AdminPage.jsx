@@ -1,13 +1,21 @@
-import React from 'react';
-
-
+import React, { useState } from 'react';
+import FormForAdd from '../Components/FormForAdd/FormForAdd';
 
 function AdminPage() {
 
-  return (
-    <p>Здесь управлять обьектом на основе которого все рендериться</p>
-  )
-}
 
+
+  return (
+    <>
+    
+
+    <FormForAdd/>
+
+      </>
+    
+  )
+  
+  
+}
 
 export default AdminPage;

@@ -39,7 +39,7 @@ function Section3() {
       <div className='article__houses'>
       {visibleHouse.map((house) => (
       
-        <Link to={`/object/${house.id}`} key={house.id} className="house-card">
+        <Link to={`/object/${house._id}`} key={house._id} className="house-card">
           
 
           
