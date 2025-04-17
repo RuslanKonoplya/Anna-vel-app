@@ -17,7 +17,7 @@
 
  @include on-Desctop{
   padding-top: 80px;
-  grid-template-rows: 0.1fr auto;
+  grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 60px;
   row-gap: 60px;
@@ -49,7 +49,8 @@
         border-radius: 10px;
 
         @include on-Desctop{
-          max-height: 500px;
+          max-height: 400px;
+
         }
       }
 
@@ -60,9 +61,10 @@
     
     @include on-Desctop{
       grid-row: 1;
+      align-self: start;
+      grid-column: 3 / 5;
       
-    
-     
+      
     }
   }
 
@@ -72,8 +74,10 @@
     grid-column: span 2;
 
     @include on-Desctop{
-      grid-column: span 4;
-      grid-row: 2;
+     
+      grid-row: 1;
+      grid-column: 3 / 5;
+      align-self: end;
     }
   }
 
