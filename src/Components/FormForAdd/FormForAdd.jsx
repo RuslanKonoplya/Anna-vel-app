@@ -9,12 +9,11 @@ function FormForAdd() {
   const [mainImage, setMainImage] = useState(null);
   const [additionalImages, setAdditionalImages] = useState([]);
 
-  // Функция для загрузки изображений на Cloudinary
   const uploadToCloudinary = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'anna-vel'); // Поменяй на твой upload preset
-    formData.append('cloud_name', 'dfuyqis8l'); // Это твой Cloud name
+    formData.append('upload_preset', 'anna-vel');
+    formData.append('cloud_name', 'dfuyqis8l');
 
     const res = await fetch('https://api.cloudinary.com/v1_1/dfuyqis8l/image/upload', {
       method: 'POST',
@@ -25,31 +24,35 @@ function FormForAdd() {
     return data.secure_url;
   };
 
-  // Обработка формы отправки
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const priceNumber = parseFloat(price);
-      // Загружаем главное изображение
+
+      // Завантаження зображень на Cloudinary
       const mainImageUrl = mainImage ? await uploadToCloudinary(mainImage) : '';
-      // Загружаем дополнительные изображения
       const imageUrls = await Promise.all(
-        Array.from(additionalImages).map((file) => uploadToCloudinary(file))
+        Array.from(additionalImages).map(file => uploadToCloudinary(file))
       );
 
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('price', priceNumber);
-      formData.append('location', location);
-      formData.append('description', description);
-      formData.append('type', type);
-      formData.append('imageUrl', mainImageUrl); // Главная картинка
-      imageUrls.forEach(url => formData.append('images', url)); // Дополнительные картинки
+      // Формуємо JSON-об'єкт
+      const payload = {
+        title,
+        price: priceNumber,
+        location,
+        description,
+        type,
+        imageUrl: mainImageUrl,
+        images: imageUrls,
+      };
 
       const response = await fetch('https://anna-vell-backend-production.up.railway.app/houses', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -58,6 +61,8 @@ function FormForAdd() {
 
       const data = await response.json();
       console.log('Data submitted:', data);
+
+      // Скидання форми
       setTitle('');
       setPrice('');
       setLocation('');
@@ -71,7 +76,7 @@ function FormForAdd() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
       <h2>Добавить недвижимость</h2>
 
       <label>Заголовок</label>
