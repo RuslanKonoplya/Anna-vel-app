@@ -1,112 +1,138 @@
 import React, { useState } from 'react';
 
-function FormForAdd() {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
-  const [type, setType] = useState('house');
-  const [mainImage, setMainImage] = useState(null);
-  const [additionalImages, setAdditionalImages] = useState([]);
+const FormForAdd = () => {
+  const [formData, setFormData] = useState({
+    title: '',
+    price: '',
+    location: '',
+    description: '',
+    type: '',
+    mainImage: null,
+    images: [],
+  });
 
-  const uploadToCloudinary = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'anna-vel');
-    formData.append('cloud_name', 'dfuyqis8l');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-    const res = await fetch('https://api.cloudinary.com/v1_1/dfuyqis8l/image/upload', {
-      method: 'POST',
-      body: formData,
-    });
-
-    const data = await res.json();
-    return data.secure_url;
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    if (name === 'mainImage') {
+      setFormData((prevData) => ({
+        ...prevData,
+        mainImage: files[0], // головне зображення
+      }));
+    } else if (name === 'images') {
+      setFormData((prevData) => ({
+        ...prevData,
+        images: Array.from(files), // додаткові зображення
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Створення FormData для відправки на сервер
+    const data = new FormData();
+    
+    // Додавання текстових полів
+    data.append('title', formData.title);
+    data.append('price', formData.price);
+    data.append('location', formData.location);
+    data.append('description', formData.description);
+    data.append('type', formData.type);
+
+    // Додавання головного зображення
+    if (formData.mainImage) {
+      data.append('mainImage', formData.mainImage);
+    }
+
+    // Додавання додаткових зображень
+    if (formData.images.length > 0) {
+      formData.images.forEach((file) => data.append('images', file));
+    }
 
     try {
-      const priceNumber = parseFloat(price);
-
-      // Завантаження зображень на Cloudinary
-      const mainImageUrl = mainImage ? await uploadToCloudinary(mainImage) : '';
-      const imageUrls = await Promise.all(
-        Array.from(additionalImages).map(file => uploadToCloudinary(file))
-      );
-
-      // Формуємо JSON-об'єкт
-      const payload = {
-        title,
-        price: priceNumber,
-        location,
-        description,
-        type,
-        imageUrl: mainImageUrl,
-        images: imageUrls,
-      };
-
       const response = await fetch('https://anna-vell-backend-production.up.railway.app/houses', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: data,
       });
 
       if (!response.ok) {
-        throw new Error('Ошибка при отправке данных');
+        throw new Error('Помилка при відправці даних');
       }
 
-      const data = await response.json();
-      console.log('Data submitted:', data);
-
-      // Скидання форми
-      setTitle('');
-      setPrice('');
-      setLocation('');
-      setDescription('');
-      setType('house');
-      setMainImage(null);
-      setAdditionalImages([]);
-    } catch (error) {
-      console.error('Ошибка:', error);
+      const result = await response.json();
+      console.log('Будинок додано:', result);
+      alert('Будинок додано успішно!');
+    } catch (err) {
+      console.error('Помилка при відправці даних:', err);
+      alert('Помилка при додаванні будинку');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>
-      <h2>Добавить недвижимость</h2>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="title"
+        value={formData.title}
+        onChange={handleChange}
+        placeholder="Назва"
+      />
+      <input
+        type="number"
+        name="price"
+        value={formData.price}
+        onChange={handleChange}
+        placeholder="Ціна"
+      />
+      <input
+        type="text"
+        name="location"
+        value={formData.location}
+        onChange={handleChange}
+        placeholder="Місцезнаходження"
+      />
+      <textarea
+        name="description"
+        value={formData.description}
+        onChange={handleChange}
+        placeholder="Опис"
+      />
+      <input
+        type="text"
+        name="type"
+        value={formData.type}
+        onChange={handleChange}
+        placeholder="Тип"
+      />
 
-      <label>Заголовок</label>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+      {/* Завантаження головного зображення */}
+      <input
+        type="file"
+        name="mainImage"
+        onChange={handleFileChange}
+        accept="image/*"
+      />
 
-      <label>Цена</label>
-      <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+      {/* Завантаження додаткових зображень */}
+      <input
+        type="file"
+        name="images"
+        onChange={handleFileChange}
+        accept="image/*"
+        multiple
+      />
 
-      <label>Локация</label>
-      <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
-
-      <label>Описание</label>
-      <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
-
-      <label>Тип недвижимости</label>
-      <select value={type} onChange={(e) => setType(e.target.value)}>
-        <option value="house">Дом</option>
-        <option value="flat">Квартира</option>
-        <option value="land">Земля</option>
-      </select>
-
-      <label>Главное изображение</label>
-      <input type="file" onChange={(e) => setMainImage(e.target.files[0])} accept="image/*" />
-
-      <label>Дополнительные изображения</label>
-      <input type="file" multiple onChange={(e) => setAdditionalImages(e.target.files)} accept="image/*" />
-
-      <button type="submit">Отправить</button>
+      <button type="submit">Додати будинок</button>
     </form>
   );
-}
+};
 
 export default FormForAdd;
