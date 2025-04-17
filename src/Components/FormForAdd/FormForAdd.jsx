@@ -38,22 +38,18 @@ function FormForAdd() {
         Array.from(additionalImages).map((file) => uploadToCloudinary(file))
       );
 
-      const formData = {
-        title,
-        price: priceNumber,
-        location,
-        description,
-        type,
-        imageUrl: mainImageUrl, // Главная картинка
-        images: imageUrls, // Дополнительные картинки
-      };
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('price', priceNumber);
+      formData.append('location', location);
+      formData.append('description', description);
+      formData.append('type', type);
+      formData.append('imageUrl', mainImageUrl); // Главная картинка
+      imageUrls.forEach(url => formData.append('images', url)); // Дополнительные картинки
 
       const response = await fetch('https://anna-vell-backend-production.up.railway.app/houses', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       if (!response.ok) {
