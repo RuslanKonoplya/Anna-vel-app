@@ -1,0 +1,30 @@
+@import '../Utils/mixins.scss';
+
+
+
+.admin__houses{
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+  @include pading-inline;
+  padding-top: 20px;
+
+
+
+
+}
+
+
+
+
+.admin__card{
+
+  display: flex;
+
+}
+
+.card__image{
+  width: 200px;
+  height: 100%;
+}

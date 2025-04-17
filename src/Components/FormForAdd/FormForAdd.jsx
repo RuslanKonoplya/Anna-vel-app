@@ -1,147 +1,111 @@
 import React, { useState } from 'react';
 
-
 function FormForAdd() {
-  
   const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('');
-    const [location, setLocation] = useState('');
-    const [description, setDescription] = useState('');
-    const [type, setType] = useState(false); 
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-  
+  const [price, setPrice] = useState('');
+  const [location, setLocation] = useState('');
+  const [description, setDescription] = useState('');
+  const [type, setType] = useState('house');
+  const [mainImage, setMainImage] = useState(null);
+  const [additionalImages, setAdditionalImages] = useState([]);
+
+  // Функция для загрузки изображений на Cloudinary
+  const uploadToCloudinary = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'anna-vel'); // Поменяй на твой upload preset
+    formData.append('cloud_name', 'dfuyqis8l'); // Это твой Cloud name
+
+    const res = await fetch('https://api.cloudinary.com/v1_1/dfuyqis8l/image/upload', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data.secure_url;
+  };
+
+  // Обработка формы отправки
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
       const priceNumber = parseFloat(price);
-  
+      // Загружаем главное изображение
+      const mainImageUrl = mainImage ? await uploadToCloudinary(mainImage) : '';
+      // Загружаем дополнительные изображения
+      const imageUrls = await Promise.all(
+        Array.from(additionalImages).map((file) => uploadToCloudinary(file))
+      );
+
       const formData = {
         title,
         price: priceNumber,
         location,
         description,
-        type: type ? 'house' : 'apartment',
+        type,
+        imageUrl: mainImageUrl, // Главная картинка
+        images: imageUrls, // Дополнительные картинки
       };
-  
-      fetch('https://anna-vell-backend-production.up.railway.app/houses', {
+
+      const response = await fetch('https://anna-vell-backend-production.up.railway.app/houses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      })
-        .then(response => {
-          if (!response.ok) {
-            return response.text().then(text => {
-              throw new Error(`Server error: ${text}`);
-            });
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Data submitted:', data);
-          setTitle('');
-          setPrice('');
-          setLocation('');
-          setDescription('');
-          setType(false);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    };
-  
-    return (
-      <form onSubmit={handleSubmit}>
-        <h2>Добавить дом</h2>
-  
-        <div>
-          <label htmlFor="title">Заголовок</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-        </div>
-  
-        <div>
-          <label htmlFor="price">Цена</label>
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </div>
-  
-        <div>
-          <label htmlFor="location">Локация</label>
-          <input
-            type="text"
-            id="location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            required
-          />
-        </div>
-  
-        <div>
-          <label htmlFor="description">Описание</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-  
-        <div>
-    <label>Тип недвижимости:</label>
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="type"
-          value="flat"
-          checked={type === 'flat'}
-          onChange={(e) => setType(e.target.value)}
-        />
-        Квартира
-      </label>
-    </div>
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="type"
-          value="house"
-          checked={type === 'house'}
-          onChange={(e) => setType(e.target.value)}
-        />
-        Дом
-      </label>
-    </div>
-    <div>
-      <label>
-        <input
-          type="radio"
-          name="type"
-          value="land"
-          checked={type === 'land'}
-          onChange={(e) => setType(e.target.value)}
-        />
-        Земля
-      </label>
-    </div>
-  </div>
-  
-        <button type="submit">Отправить</button>
-      </form>
-    );
+      });
 
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке данных');
+      }
+
+      const data = await response.json();
+      console.log('Data submitted:', data);
+      setTitle('');
+      setPrice('');
+      setLocation('');
+      setDescription('');
+      setType('house');
+      setMainImage(null);
+      setAdditionalImages([]);
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column' }}>
+      <h2>Добавить недвижимость</h2>
+
+      <label>Заголовок</label>
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+
+      <label>Цена</label>
+      <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+
+      <label>Локация</label>
+      <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} required />
+
+      <label>Описание</label>
+      <textarea value={description} onChange={(e) => setDescription(e.target.value)} required />
+
+      <label>Тип недвижимости</label>
+      <select value={type} onChange={(e) => setType(e.target.value)}>
+        <option value="house">Дом</option>
+        <option value="flat">Квартира</option>
+        <option value="land">Земля</option>
+      </select>
+
+      <label>Главное изображение</label>
+      <input type="file" onChange={(e) => setMainImage(e.target.files[0])} accept="image/*" />
+
+      <label>Дополнительные изображения</label>
+      <input type="file" multiple onChange={(e) => setAdditionalImages(e.target.files)} accept="image/*" />
+
+      <button type="submit">Отправить</button>
+    </form>
+  );
 }
-
 
 export default FormForAdd;
