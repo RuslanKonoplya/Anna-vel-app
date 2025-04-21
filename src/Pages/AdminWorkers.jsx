@@ -29,7 +29,7 @@ function AdminWorkers() {
     data.append('img', formData.img);
 
     try {
-      const response = await fetch('/api/employees', {
+      const response = await fetch('https://anna-vell-backend-production.up.railway.app/api/employees', {
         method: 'POST',
         body: data,
       });
