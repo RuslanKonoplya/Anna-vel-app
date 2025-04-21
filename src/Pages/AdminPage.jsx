@@ -1,5 +1,6 @@
 import AdminHouses from './AdminHouses'
 import AdminFeedback from './AdminFeedback';
+import AdminWorkers from './AdminWorkers';
 import './AdminPage.scss'
 import { useState } from 'react';
 
@@ -20,7 +21,7 @@ function AdminPage() {
       {/* Content */}
       <div className="admin-content">
         {activeTab === 'houses' && <AdminHouses />}
-       {/* {activeTab === 'workers' && <AdminWorkers />} */}
+       {activeTab === 'workers' && <AdminWorkers />}
        {activeTab === 'feedback' && <AdminFeedback />}
 
       </div>

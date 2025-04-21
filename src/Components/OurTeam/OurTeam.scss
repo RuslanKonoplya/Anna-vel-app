@@ -30,6 +30,13 @@
   flex-direction: column;
   gap: 40px;
 
+
+
+  @include on-Desctop{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
 }
 
 
@@ -38,10 +45,21 @@
 
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
   width: 100%;
 
 
+
+  @include on-Desctop{
+    width: 30%;
+  }
+
+
+
+  &__name{
+    text-align: center;
+    font-size: 24px;
+  }
   
 
 
@@ -49,11 +67,11 @@
 
     width: 100%;
     height: auto;
-    border-radius: 35%;
+    border-radius: 30%;
 
 
     @include on-Desctop{
-      width: 35%;
+      width: 100%;
       align-self: center;
     }
 
@@ -69,7 +87,7 @@
 
     @include on-Desctop{
       align-self: center;
-      font-size: 24px;
+      
     }
   }
 }
