@@ -16,8 +16,8 @@
 
 
  @include on-Desctop{
-  padding-top: 80px;
-  grid-template-rows: 1fr;
+  
+  grid-template-rows: 0.3fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 60px;
   row-gap: 60px;
@@ -27,6 +27,7 @@
 
 
  &__title{
+  
   font-size: 24px;
  }
 
@@ -42,20 +43,11 @@
     }
   }
 
-      &__img{
-        width: 100%;
-         height: 100% ; 
-        object-fit:  cover;
-        border-radius: 10px;
-
-        @include on-Desctop{
-          max-height: 400px;
-
-        }
-      }
+      
 
 
   &__about{
+    text-align: center;
     grid-row: 2;
     grid-column: span 2;
     
@@ -75,9 +67,9 @@
 
     @include on-Desctop{
      
-      grid-row: 1;
+      grid-row: 2;
       grid-column: 3 / 5;
-      align-self: end;
+      
     }
   }
 
@@ -86,3 +78,12 @@
 
 
 
+.slider{
+  grid-row: span 2;
+  grid-column: span 2;
+
+
+  @include on-Desctop{
+    grid-column: 1/3;
+  }
+}

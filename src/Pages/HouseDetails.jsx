@@ -45,7 +45,7 @@ function HouseDetails() {
           <p className='house__price'><strong>Ціна:</strong> {house.price.toLocaleString()} $</p>
         </div>
 
-        <p className='house__description'><strong>Опис:</strong> {house.description}</p>
+        <p className='house__description'>{house.description}</p>
       </div>
 
       <Footer />
