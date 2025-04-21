@@ -48,9 +48,12 @@ export default function FormForAdd() {
   return (
     <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:8 }}>
       <h2>Додати будинок</h2>
-      <input type="text"     placeholder="Заголовок"   value={title}       onChange={e=>setTitle(e.target.value)}       required />
-      <input type="number"   placeholder="Ціна"        value={price}       onChange={e=>setPrice(e.target.value)}       required />
-      <input type="text"     placeholder="Локація"     value={location}    onChange={e=>setLocation(e.target.value)}   required />
+      <input type="text"     
+      placeholder="Заголовок"   value={title}       onChange={e=>setTitle(e.target.value)}       required />
+      <input type="number"   
+      placeholder="Ціна"        value={price}       onChange={e=>setPrice(e.target.value)}       required />
+      <input type="text"     
+      placeholder="Локація"     value={location}    onChange={e=>setLocation(e.target.value)}   required />
       <textarea placeholder="Опис"           value={description} onChange={e=>setDescription(e.target.value)} required />
       <select value={type} onChange={e=>setType(e.target.value)}>
         <option value="house">Будинок</option>
