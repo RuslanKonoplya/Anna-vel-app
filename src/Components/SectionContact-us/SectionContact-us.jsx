@@ -21,7 +21,7 @@ export default function ContactForm() {
     e.preventDefault(); // Отключаем перезагрузку
 
     try {
-      const res = await fetch('https://anna-vell-backend-production.up.railway.app/feedback', {
+      const res = await fetch('https://anna-vell-backend-production.up.railway.app/api/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
