@@ -4,8 +4,7 @@ import NavBar from '../Components/NavBar/NavBar';
 import Footer from '../Components/Footer/Footer';
 import FollowUS from '../Components/FollowUs/FollowUs';
 import './HouseDetails.scss';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import ImageGalery from '../Components/ImageGalery/ImageGalery';
 
 function HouseDetails() {
