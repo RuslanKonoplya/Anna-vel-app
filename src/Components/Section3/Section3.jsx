@@ -28,7 +28,7 @@ function Section3() {
 
 
 
-  console.log(houses)
+  
 
   return (
     <section className='section__houses'>
