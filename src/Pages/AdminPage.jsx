@@ -1,4 +1,5 @@
 import AdminHouses from './AdminHouses'
+import AdminFeedback from './AdminFeedback';
 import './AdminPage.scss'
 import { useState } from 'react';
 
@@ -12,15 +13,15 @@ function AdminPage() {
       {/* Top Bar */}
       <div className="topbar">
         <button onClick={() => setActiveTab('houses')}>🏠 Объекты</button>
-        <button onClick={() => setActiveTab('workers')}>👷‍♂️ Работники</button>
-        <button onClick={() => setActiveTab('feedback')}>📬 Отзывы</button>
+        <button onClick={() => setActiveTab('workers')}>👷‍♂️ Працівники</button>
+        <button onClick={() => setActiveTab('feedback')}>📬 Зворотній зв'язок</button>
       </div>
 
       {/* Content */}
       <div className="admin-content">
         {activeTab === 'houses' && <AdminHouses />}
        {/* {activeTab === 'workers' && <AdminWorkers />} */}
-       {/* {activeTab === 'feedback' && <AdminFeedback />} */}
+       {activeTab === 'feedback' && <AdminFeedback />}
 
       </div>
     </div>
