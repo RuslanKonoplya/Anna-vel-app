@@ -1,0 +1,75 @@
+
+@import '../../Utils/mixins.scss';
+
+
+
+.ourteam{
+
+  @include pading-inline;
+  width: 100%;
+  
+
+  &__title{
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 50px;
+
+    @include on-Desctop {
+      font-size: 36px;
+    }
+
+  }
+
+}
+
+
+
+.workers{
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+}
+
+
+.worker{
+
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+
+
+  
+
+
+  &__img{
+
+    width: 100%;
+    height: auto;
+    border-radius: 35%;
+
+
+    @include on-Desctop{
+      width: 35%;
+      align-self: center;
+    }
+
+  }
+
+
+  &__description{
+
+    
+    word-break: break-word;
+    overflow-wrap: break-word;
+
+
+    @include on-Desctop{
+      align-self: center;
+      font-size: 24px;
+    }
+  }
+}
