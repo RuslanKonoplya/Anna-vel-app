@@ -6,7 +6,7 @@ import FollowUS from '../Components/FollowUs/FollowUs';
 import './HouseDetails.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ImageCarousel from '../Components/ImageCarousel.jsx/ImageCaurusel';
+import ImageGalery from '../Components/ImageGalery/ImageGalery';
 
 function HouseDetails() {
   const { id } = useParams();
@@ -37,7 +37,7 @@ function HouseDetails() {
       <NavBar styles={{ background: "linear-gradient(90deg, #4caf50, #e0e0e0)" }} />
 
       <div className="house">
-        <ImageCarousel images={house.images} />
+        <ImageGalery images={house.images} />
 
         <div className='house__about'>
           <h1 className='house__title'>{house.title}</h1>
