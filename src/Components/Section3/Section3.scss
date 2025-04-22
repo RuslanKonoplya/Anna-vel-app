@@ -23,32 +23,6 @@
   }
   
 
-  &__button{
-    height: 36px;
-    width: 100%;
-    margin: 30px auto;
-    border-radius: 10px;
-    background-color: #00a046;
-    color: white;
-
-
-
-    &:hover{
-      background-color: #00b455;
-    };
-
-
-    &:active{
-      background-color: #007c35;
-      transform: scale(0.97);
-    }
-
-    @include on-Desctop{
-      width: 30%;
-      display: block;
-      
-    }
-  }
 }
 
 
@@ -92,7 +66,9 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  max-height: 560px;
+  aspect-ratio: 1 / 1;
+  
+
 }
 
 .house-card__content {
@@ -119,4 +95,37 @@
 .house-card__description {
   font-size: 0.95rem;
   color: #333;
+}
+
+
+.link-to-objects{
+  height: 36px;
+  width: 100%;
+  margin: 30px auto;
+  border-radius: 10px;
+  background-color: #00a046;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+
+
+
+  &:hover{
+    background-color: #00b455;
+  };
+
+
+  &:active{
+    background-color: #007c35;
+    transform: scale(0.97);
+  }
+
+  @include on-Desctop{
+    width: 30%;
+    
+  }
 }

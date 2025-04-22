@@ -50,7 +50,7 @@
 
 
 
-  @include on-Desctop{
+@include on-Desctop{
     width: 30%;
   }
 
@@ -63,18 +63,16 @@
   
 
 
-  &__img{
-
+  &__img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 1 / 1; 
     border-radius: 30%;
+    object-fit: cover;
+    object-position: center;
 
-
-    @include on-Desctop{
-      width: 100%;
-      align-self: center;
+    @include on-Desctop {
+      width: 100%; 
     }
-
   }
 
 

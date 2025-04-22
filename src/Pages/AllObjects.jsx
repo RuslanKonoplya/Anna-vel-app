@@ -1,25 +1,22 @@
 
-import './Section3.scss';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from '../Components/NavBar/NavBar';
 
 
 
-
-
-
-function Section3() {
+function AllObjects() {
   
   const [houses, setHouses] = useState([]);
   const [visibleHouse, setVisibleHouse] = useState([]);
-  const [isClicked, setIsClicked] = useState(false);
+  
 
   useEffect(() => {
     fetch('https://anna-vell-backend-production.up.railway.app/houses')
       .then(res => res.json())
       .then(data => {
         setHouses(data);
-        setVisibleHouse(data.slice(0, 3));
+        
       })
       .catch(err => {
         console.error('Помилка при завантаженні будинків:', err);
@@ -31,13 +28,15 @@ function Section3() {
   
 
   return (
+      <>
+    <NavBar styles={{ background: "linear-gradient(90deg, #4caf50, #e0e0e0)" }} />
     <section className='section__houses'>
 
 
       <p className='section__houses__title'>Наші Об'єкти</p>
 
       <div className='article__houses'>
-      {visibleHouse.map((house) => (
+      {houses.map((house) => (
       
         <Link to={`/object/${house._id}`} key={house._id} className="house-card">
           
@@ -59,21 +58,15 @@ function Section3() {
       
       
 
-      
-      <Link to={'/objects'} className='link-to-objects'>
-       Показати ще
-     </Link>
-      
-       
+     
       
       
 
-    </section>
+      </section>
+      
+      </>
   );
 };
 
-export default Section3;
 
-
-
-
+export default AllObjects;
