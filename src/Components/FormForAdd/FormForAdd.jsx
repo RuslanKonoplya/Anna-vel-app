@@ -1,5 +1,28 @@
 import React, { useState } from 'react';
 
+
+
+
+const inputStyle = {
+  padding: '12px',
+  borderRadius: '8px',
+  border: '1px solid #ccc',
+  fontSize: '16px',
+  width: '100%',
+  boxSizing: 'border-box',
+  margin: '8px 0'
+};
+
+const labelStyle = {
+  fontWeight: 'bold',
+  marginTop: '16px'
+};
+
+
+
+
+
+
 export default function FormForAdd() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
@@ -46,33 +69,99 @@ export default function FormForAdd() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display:'flex', flexDirection:'column', gap:8 }}>
-      <h2>Додати будинок</h2>
-      <input type="text"     
-      placeholder="Заголовок"   value={title}       onChange={e=>setTitle(e.target.value)}       required />
-      <input type="number"   
-      placeholder="Ціна"        value={price}       onChange={e=>setPrice(e.target.value)}       required />
-      <input type="text"     
-      placeholder="Локація"     value={location}    onChange={e=>setLocation(e.target.value)}   required />
-      <textarea placeholder="Опис"           value={description} onChange={e=>setDescription(e.target.value)} required />
-      <select value={type} onChange={e=>setType(e.target.value)}>
-        <option value="house">Будинок</option>
-        <option value="flat">Квартира</option>
-        <option value="land">Земля</option>
-      </select>
+    <form 
+  onSubmit={handleSubmit} 
+  style={{
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    width: '100%',
+    margin: '40px auto',
+    padding: '24px',
+    borderRadius: '12px',
+    backgroundColor: '#f9f9f9',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    boxSizing: 'border-box'
+  }}
+>
+  <h2 style={{ textAlign: 'center', marginBottom: '16px' }}>Додати будинок</h2>
 
-      <label>Головне зображення</label>
-      <input type="file" accept="image/*"
-        onChange={e=>setMainImage(e.target.files[0])}
-        required
-      />
+  <input 
+    type="text" 
+    placeholder="Заголовок"
+    value={title}
+    onChange={e => setTitle(e.target.value)}
+    required
+    style={inputStyle}
+  />
+  <input 
+    type="number" 
+    placeholder="Ціна"
+    value={price}
+    onChange={e => setPrice(e.target.value)}
+    required
+    style={inputStyle}
+  />
+  <input 
+    type="text" 
+    placeholder="Локація"
+    value={location}
+    onChange={e => setLocation(e.target.value)}
+    required
+    style={inputStyle}
+  />
+  <textarea 
+    placeholder="Опис"
+    value={description}
+    onChange={e => setDescription(e.target.value)}
+    required
+    style={{ ...inputStyle, height: '120px', resize: 'vertical' }}
+  />
+  <select 
+    value={type}
+    onChange={e => setType(e.target.value)}
+    style={inputStyle}
+  >
+    <option value="house">Будинок</option>
+    <option value="flat">Квартира</option>
+    <option value="land">Земля</option>
+  </select>
 
-      <label>Додаткові зображення</label>
-      <input type="file" accept="image/*" multiple
-        onChange={e=>setImages(Array.from(e.target.files))}
-      />
+  <label style={labelStyle}>Головне зображення</label>
+  <input 
+    type="file" 
+    accept="image/*"
+    onChange={e => setMainImage(e.target.files[0])}
+    required
+    style={inputStyle}
+  />
 
-      <button type="submit">Відправити</button>
-    </form>
+  <label style={labelStyle}>Додаткові зображення</label>
+  <input 
+    type="file" 
+    accept="image/*" 
+    multiple
+    onChange={e => setImages(Array.from(e.target.files))}
+    style={inputStyle}
+  />
+
+  <button 
+    type="submit" 
+    style={{
+      padding: '12px',
+      backgroundColor: '#007BFF',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '8px',
+      cursor: 'pointer',
+      fontWeight: 'bold',
+      width: '100%' // Кнопка займає всю ширину
+    }}
+  >
+    Відправити
+  </button>
+</form>
+
+  
   );
 }

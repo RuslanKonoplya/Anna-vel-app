@@ -1,44 +1,59 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function LoginPage() {
-  const [username, setUsername] = useState('');
+const LoginPage = () => {
+  const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Простая проверка на фронте
-    if (username === 'admin' && password === '12345') {
-      // Можно сохранить флаг в localStorage
-      localStorage.setItem('isAdmin', 'true');
-      navigate('/admin');
-    } else {
-      alert('Неверный логин или пароль');
+    try {
+      const res = await fetch('https://anna-vell-backend-production.up.railway.app/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success && data.token) {
+        // Зберігаємо токен у localStorage
+        localStorage.setItem('token', data.token);
+        navigate('/admin'); // Перехід на захищену сторінку
+      } else {
+        setError(data.message || 'Невірний логін або пароль');
+      }
+    } catch (err) {
+      setError('Сталася помилка при авторизації');
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Admin Login</h2>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      <h2>Логін</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+          placeholder="Логін"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Пароль"
+          required
+        />
+        <button type="submit">Увійти</button>
+      </form>
+      {error && <p>{error}</p>}
+    </div>
   );
-}
+};
 
 export default LoginPage;
