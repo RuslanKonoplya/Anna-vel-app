@@ -1,0 +1,127 @@
+@import '../../Utils/mixins.scss';
+
+$main-text-color: #FFFFFF;
+
+.nav {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  @include on-Tablet {
+    height: 80px;
+    padding: 0 40px;
+  }
+
+  &__logo {
+    width: 50px;
+    height: 50px;
+
+    @include on-Tablet {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include on-Tablet {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $main-text-color;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #ddd;
+    }
+  }
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+
+  &__line {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 2px;
+  }
+
+  @include on-Tablet {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  transition: 3s ease-in;
+
+  &.open {
+    display: flex;
+  }
+
+  flex-direction: column;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  backdrop-filter: blur(12px);
+  padding: 100px 20px 20px;
+  z-index: 1000;
+  transition: transform 3s ease;
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background: none;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    
+  }
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+
+    &:hover {
+      color: #ddd;
+    }
+  }
+
+  @include on-Tablet {
+    display: none;
+  }
+}

@@ -36,16 +36,31 @@ function HouseDetails() {
       <NavBar styles={{ background: "linear-gradient(90deg, #4caf50, #e0e0e0)" }} />
 
       <div className="house">
-        <ImageGalery images={house.images} />
+  <div className="house__gallery">
+    <ImageGalery images={house.images} />
+  </div>
 
-        <div className='house__about'>
-          <h1 className='house__title'>{house.title}</h1>
-          <p className='house__location'><strong>Локація:</strong> {house.location}</p>
-          <p className='house__price'><strong>Ціна:</strong> {house.price.toLocaleString()} $</p>
-        </div>
+  <div className="house__info">
+    <h1 className="house__info__title">{house.title}</h1>
 
-        <p className='house__description'>{house.description}</p>
-      </div>
+    <div className="house__info__card">
+      <span className="icon">📍</span>
+      <span>{house.location}</span>
+    </div>
+
+    <div className="house__info__card">
+      <span className="icon">💲</span>
+      <span>{house.price.toLocaleString()} $</span>
+    </div>
+
+    <div className="house__info__desc">
+      {house.description}
+    </div>
+
+    
+  </div>
+</div>
+
 
       <Footer />
       <FollowUS />

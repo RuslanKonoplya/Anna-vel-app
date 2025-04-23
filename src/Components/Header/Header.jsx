@@ -1,4 +1,5 @@
-import NavBar from '../NavBar/NavBar';
+
+import  NavBarMain  from '../NavBarMain/NavBarMain';
 import './Header.scss';
 import { useState, useEffect } from 'react';
 
@@ -54,7 +55,7 @@ export function Header() {
       
 
       
-      <NavBar/>
+      <NavBarMain/>
       
       <h1 className="header__title">Агенція з нерухомості  ANNA VEL</h1>
       <div className="header__sheudule">
