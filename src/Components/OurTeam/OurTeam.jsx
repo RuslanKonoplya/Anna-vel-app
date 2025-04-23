@@ -40,7 +40,7 @@ function OurTeam() {
   }
 
   return (
-    <section className='ourteam'>
+    <section className='ourteam' id='ourteam'>
       <h1 className='ourteam__title'>Наша Команда</h1>
 
       <div className='workers'>

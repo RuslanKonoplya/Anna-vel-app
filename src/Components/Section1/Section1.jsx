@@ -7,7 +7,7 @@ function Section1() {
 
 
   return (
-    <section className='section__about-us'>
+    <section className='section__about-us' id='about-us'>
 
 
       <div className='side-left'>

@@ -31,7 +31,7 @@ function Section3() {
   
 
   return (
-    <section className='section__houses'>
+    <section className='section__houses' id='houses'>
 
 
       <p className='section__houses__title'>Наші Об'єкти</p>

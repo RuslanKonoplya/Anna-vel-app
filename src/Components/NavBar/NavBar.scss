@@ -4,106 +4,79 @@
 $main-text-color--: #FFFFFF;
 
 .nav {
-  
- 
   width: 100%;
-  height: 50px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  opacity: 1;
-  box-sizing: border-box;
- 
-  transition-duration: 1s;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease;
 
-  @include on-Tablet{
+  @include on-Tablet {
     height: 80px;
+    padding: 0 40px;
   }
-  
-
 
   // .nav__logo
-
-  &__logo{
-
+  &__logo {
     width: 50px;
     height: 50px;
 
-    @include on-Tablet{
-      width:80px; 
-      height:80px;
+    @include on-Tablet {
+      width: 80px;
+      height: 80px;
     }
   }
 
-  // .nav__p
-
-
-  &__link{
+  // .nav__link
+  &__link {
     text-decoration: none;
     color: $main-text-color--;
+    font-weight: 600;
+    font-size: 16px;
+    transition: color 0.3s;
 
-    
-
-    
-
-
-
-  }
-  &__p {
-    color:$main-text-color--;
-    font-size: 12px;
-    gap: 10px;
-    display: flex;
-    margin-right: 20px;
-
-    @include website-text;
-     white-space: nowrap;
-
-    @include on-Tablet{
-      font-size: 30px;
-    }
-
-    @include on-Desctop{
-      font-size: 36px;
-      gap: 20px;
+    &:hover {
+      color: #ddd;
     }
   }
 
   // .nav__button
-
   &__button {
     display: none;
-    text-decoration: none;
 
+    @include on-Desctop {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background-color: #1a73e8;
+      color: #fff;
+      margin-right: 20px;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
 
-    @include on-Desctop{
-    display: block;
-    background-color: transparent;
-    margin-right: 20px;
-    width:210px;
-    height: 40px;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 16px; /* Размер шрифта */
-    border: 1px solid #000;
-    @include website-text;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-      &:hover{
-        background-color: #2F4F4F;
+      &:hover {
+        background-color: #1669c1;
+        transform: scale(1.03);
       }
 
-      &:active{
-        background-color:#366969;
+      &:active {
+        background-color: #0e4fa3;
+        transform: scale(0.98);
       }
-
     }
-
-
-
-    
-    
   }
 }
-
-
-

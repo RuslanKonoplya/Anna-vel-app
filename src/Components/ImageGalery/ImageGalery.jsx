@@ -1,68 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
-export default function ImageGallery({ images }) {
+const ImageGallery = ({ images }) => {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
-
   const slides = images.map((src) => ({ src }));
 
+  const handleImageClick = useCallback((i) => {
+    setIndex(i);
+    setOpen(true);
+  }, []);
+
   return (
-    <div style={{ width: '100%' }} className='slider'>
-      {/* Головне зображення */}
-      {images[0] && (
+    <div style={styles.slider} className="slider">
+      {images.map((img, i) => (
         <img
-          src={images[0]}
-          alt="Main"
+          key={i}
+          src={img}
+          alt={`Thumb ${i}`}
           style={{
-            width: '100%',
-            height: '500px',
-            objectFit: 'cover',
-            borderRadius: '12px',
-            cursor: 'pointer',
-            marginBottom: '12px',
+            ...styles.thumb,
+            border: index === i ? '2px solid #007bff' : '2px solid transparent',
           }}
-          onClick={() => {
-            setIndex(0);
-            setOpen(true);
-          }}
+          onClick={() => handleImageClick(i)}
         />
-      )}
+      ))}
 
-      {/* Горизонтальна стрічка мініатюр */}
-      <div
-        style={{
-          display: 'flex',
-          gap: '10px',
-          overflowX: 'auto',
-          paddingBottom: '10px',
-        }}
-      >
-        {images.map((img, i) => (
-          <img
-            key={i}
-            src={img}
-            alt={`Thumb ${i}`}
-            style={{
-              flex: '0 0 auto',
-              width: '20%',
-              height: '80px',
-              objectFit: 'cover',
-              borderRadius: '6px',
-              cursor: 'pointer',
-              border: index === i ? '2px solid #007bff' : '2px solid transparent',
-              transition: 'border 0.3s ease',
-            }}
-            onClick={() => {
-              setIndex(i);
-              setOpen(true);
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Лайтбокс */}
       <Lightbox
         open={open}
         close={() => setOpen(false)}
@@ -72,4 +36,26 @@ export default function ImageGallery({ images }) {
       />
     </div>
   );
-}
+};
+
+const styles = {
+  slider: {
+    width: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '10px',
+    justifyContent: 'center',
+    overflowY: 'auto',
+  },
+  thumb: {
+    flex: '0 0 calc(33.333% - 10px)', // три миниатюры в ряд
+    height: '120px',                   // чуть меньше, чем было
+    objectFit: 'cover',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease, border 0.2s ease',
+    opacity: 0.85,
+  },
+};
+
+export default ImageGallery;

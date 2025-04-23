@@ -6,7 +6,7 @@ function Section2() {
 
 
   return (
-    <section className='section-services'>
+    <section className='section-services' id='servises'>
 
 
         <div className='left'>
