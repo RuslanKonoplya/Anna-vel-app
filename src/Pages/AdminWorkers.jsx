@@ -85,6 +85,7 @@ function AdminWorkers() {
           borderRadius: '40%',
           objectFit: 'cover',
           flexShrink: 0,
+          aspectRatio: '1 / 1'
         }}
       />
       <div style={{ flex: 1, minWidth: '150px' }}>
