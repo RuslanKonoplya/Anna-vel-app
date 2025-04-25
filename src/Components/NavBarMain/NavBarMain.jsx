@@ -36,7 +36,7 @@ const NavBarMain = () => {
         <a href="#servises" className="mobile-menu__link" onClick={toggleMenu}>Послуги</a>
         <a href="#houses" className="mobile-menu__link" onClick={toggleMenu}>Об'єкти</a>
         <a href="#ourteam" className="mobile-menu__link" onClick={toggleMenu}>Наша Команда</a>
-        <a href="#form__contact-us" className="mobile-menu__link" onClick={toggleMenu}>Контакти</a>
+        <a href="contacts" className="mobile-menu__link" onClick={toggleMenu}>Контакти</a>
       </aside>
     </>
   );

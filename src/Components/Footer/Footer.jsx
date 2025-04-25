@@ -10,7 +10,7 @@ function Footer() {
     <footer className='footer'>
 
 
-      <h1 className='footer__title'>Зв'яжіться з нами</h1>
+      <h1 className='footer__title' id='contacts'>Зв'яжіться з нами</h1>
 
       
         <div className="footer__contacts">
