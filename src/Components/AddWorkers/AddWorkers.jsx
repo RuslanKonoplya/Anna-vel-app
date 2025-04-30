@@ -6,6 +6,7 @@ function AddWorkers() {
     name: '',
     description: '',
     img: null,
+    role: '',
   });
 
   const [successMessage, setSuccessMessage] = useState('');
@@ -24,8 +25,10 @@ function AddWorkers() {
 
     const data = new FormData();
     data.append('name', formData.name);
+    data.append('role', formData.role);
     data.append('description', formData.description);
     data.append('img', formData.img);
+    
 
     try {
       const response = await fetch('https://anna-vell-backend-production.up.railway.app/api/employees', {
@@ -38,7 +41,7 @@ function AddWorkers() {
       }
 
       setSuccessMessage('Працівника додано успішно!');
-      setFormData({ name: '', description: '', img: null });
+      setFormData({ name: '',role : '', description: '', img: null ,});
       e.target.reset();
     } catch (error) {
       alert('Помилка при додаванні працівника');
@@ -57,6 +60,19 @@ function AddWorkers() {
           type="text"
           name="name"
           value={formData.name}
+          onChange={handleChange}
+          required
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+        />
+        </div>
+        
+
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <label style={{ marginBottom: '4px' }}>Спеціалізація</label>
+        <input
+          type="text"
+          name="role"
+          value={formData.role}
           onChange={handleChange}
           required
           style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}

@@ -4,12 +4,12 @@ import './NavBar.scss'
 export function NavBar({ styles }) {
 
   return (
-    <nav className="nav">
+    <nav className="navi">
   <a href="/">
-    <img src="/Images/ANNA VEL-Logo.png" alt="Logo" className="nav__logo" width="80" height="80"/>
+    <img src="/Images/ANNA VEL-Logo.png" alt="Logo" className="navi__logo" width="80" height="80"/>
   </a>
 
-  <a href="#form__contact-us" className="nav__button">
+  <a href="#form__contact-us" className="navi__button">
     <span>📩</span> Зворотній зв'язок
   </a>
 </nav>

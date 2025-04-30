@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import NavBar from '../Components/NavBar/NavBar';
+
 import Footer from '../Components/Footer/Footer';
 import FollowUS from '../Components/FollowUs/FollowUs';
 import './HouseDetails.scss';
 
 import ImageGalery from '../Components/ImageGalery/ImageGalery';
+import NavBarMain from '../Components/NavBarMain/NavBarMain';
 
 function HouseDetails() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ function HouseDetails() {
 
   return (
     <>
-      <NavBar styles={{ background: "linear-gradient(90deg, #4caf50, #e0e0e0)" }} />
+      <NavBarMain/>
 
       <div className="house">
   <div className="house__gallery">

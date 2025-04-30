@@ -1,12 +1,13 @@
 
 import './OurTeam.scss';
-
 import { useState, useEffect } from 'react';
+
 
 function OurTeam() {
   const [persons, setPersons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+ 
 
   // Функція для отримання працівників
   const fetchEmployees = async () => {
@@ -24,31 +25,35 @@ function OurTeam() {
     }
   };
 
-  // Викликаємо fetchEmployees при завантаженні компоненти
+  // Отримання працівників при завантаженні компоненти
   useEffect(() => {
     fetchEmployees();
-  }, []); // Пустий масив залежностей означає, що запит буде виконано тільки один раз
+  }, []);
 
-  // Виведення під час завантаження
+  
+
   if (loading) {
     return <div>Завантаження...</div>;
   }
 
-  // Виведення помилки
   if (error) {
     return <div>Помилка: {error}</div>;
   }
 
   return (
-    <section className='ourteam' id='ourteam'>
-      <h1 className='ourteam__title'>Наша Команда</h1>
-
-      <div className='workers'>
+    <section id="ourteam">
+      <h1 className="ourteam__title">Наша Команда</h1>
+      <div className="workers">
         {persons.map((person, index) => (
-          <div className='worker' key={index}>
-            <img src={person.img} alt="Фото Працівника" className='worker__img' />
-            <p className='worker__name'>{person.name}</p>
-            <p className='worker__description'>{person.description}</p>
+          <div className="worker" key={index}>
+            <img
+              src={person.img}
+              alt={`Фото ${person.name}`}
+              className="worker__img"
+            />
+            <p className="worker__name">{person.name}</p>
+            <p className="worker__role">{person.role}</p>
+            <p className="worker__description">{person.description}</p>
           </div>
         ))}
       </div>

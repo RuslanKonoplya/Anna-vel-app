@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import AddWorkers from '../Components/AddWorkers/AddWorkers';
+import AddWorkers from '../../Components/AddWorkers/AddWorkers';
 
 function AdminWorkers() {
   const [persons, setPersons] = useState([]);

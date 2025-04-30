@@ -1,8 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from '../Components/NavBar/NavBar';
+
 import Footer from '../Components/Footer/Footer';
+import SortButtons from '../Components/Sortbuttons/Sortbuttons';
+import NavBarMain from '../Components/NavBarMain/NavBarMain';
+
+
+
+
 
 
 
@@ -10,7 +16,7 @@ import Footer from '../Components/Footer/Footer';
 function AllObjects() {
   
   const [houses, setHouses] = useState([]);
-  const [visibleHouse, setVisibleHouse] = useState([]);
+const [visibleHouse, setVisibleHouse] = useState([]);
   
 
   useEffect(() => {
@@ -18,6 +24,7 @@ function AllObjects() {
       .then(res => res.json())
       .then(data => {
         setHouses(data);
+        setVisibleHouse(data)
         
       })
       .catch(err => {
@@ -27,7 +34,7 @@ function AllObjects() {
 
 
 
-  
+  ////для каталога 
 
   const styles = {
     catalogSection: {
@@ -88,21 +95,38 @@ function AllObjects() {
       marginTop: '4px',
     },
   };
+
+
+
+  //
+  
+
+
+  function sort(type) {
+    const filtered = houses.filter(house => house.type === type);
+    setVisibleHouse(filtered);
+  }
   
 
   return (
     <>
       
-      <NavBar />
+      <NavBarMain />
+      
+      <SortButtons sort={sort} />
+      
       
 
-
       
-    <section style={styles.catalogSection}>
+      <section style={styles.catalogSection}>
+        
+
+
+
   <h2 style={styles.catalogTitle}>Наші Об'єкти</h2>
 
   <div style={styles.cardGrid}>
-    {houses.map((house) => (
+    {visibleHouse.map((house) => (
       <Link to={`/object/${house._id}`} key={house._id} style={styles.card} className="property-card">
         <img src={house.imageUrl} alt={house.title} style={styles.cardImg} />
         <div style={styles.cardInfo}>
