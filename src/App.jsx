@@ -1,20 +1,28 @@
-
-import './App.scss';
-import Main from './Pages/Main';
-import HouseDetails from './Pages/HouseDetails';
-import AdminPage from './Pages/AdminPage';
-import LoginPage from './Pages/LoginPage';
-import PrivateRoute from './Components/PrivateRoute/PrivateRoute'; 
-import AllObjects from './Pages/AllObjects';
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import "./App.scss";
+import Main from "./Pages/Main";
+import HouseDetails from "./Pages/HouseDetails";
+import AdminPage from "./Pages/AdminPages/AdminPage";
+import LoginPage from "./Pages/AdminPages/LoginPage";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import AllObjects from "./Pages/AllObjects";
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import AboutUs from "./Pages/AboutUs";
+import OurServices from "./Pages/OurServices";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path='/objects' element= {<AllObjects/>} />
+       <Route path="/services" element={<OurServices/>}/>
+        <Route path="/about-us" element={<AboutUs/>}/>
+        <Route path="/objects" element={<AllObjects />} />
         <Route path="/" element={<Main />} />
         <Route path="/object/:id" element={<HouseDetails />} />
         <Route path="/login" element={<LoginPage />} />
@@ -26,8 +34,6 @@ function App() {
             </PrivateRoute>
           }
         />
-
-
       </Routes>
     </Router>
   );
