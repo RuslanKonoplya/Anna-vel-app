@@ -1,0 +1,75 @@
+@import '../../Utils/mixins.scss';
+
+
+.section__mebli-bro {
+  display: flex;
+  flex-direction: column; 
+
+  @include on-Desctop {
+    flex-direction: row; 
+  }
+}
+
+
+////стили в section1
+/// 
+
+.side-rigth__content-mb{
+  width: 50%; 
+    aspect-ratio: 1 / 1; 
+    box-sizing: border-box;
+    animation: scaleAnimation 5s ease-in-out infinite;
+    
+
+    @keyframes scaleAnimation {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9); /* Зменшуємо */
+      }
+      100% {
+        transform: scale(1); /* Повертаємо до нормального розміру */
+      }
+    }
+
+    @include on-Desctop {
+      width: 50%; 
+      
+    }
+
+  }
+
+
+
+
+
+
+.side-rigth__content-mb:nth-child(1) {
+  background-image: url(../../../public/Images/photo_5260481682673368253_y.jpg);
+  background-size: contain;
+  background-position: center;
+}
+
+
+.side-rigth__content-mb:nth-child(2) {
+  background-image: url(../../../public/Images/photo_5260481682673368254_y.jpg);
+  background-size: cover;
+}
+
+
+.side-rigth__content-mb:nth-child(3) {
+  background-image: url(../../../public/Images/photo_5260481682673368268_y.jpg);
+  background-size: cover;
+}
+
+
+.side-rigth__content-mb:nth-child(4) {
+  background-image: url(../../../public/Images/photo_5260481682673368274_y.jpg);
+  background-size: cover;
+  
+
+}
+
+
+
