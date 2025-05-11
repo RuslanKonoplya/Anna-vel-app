@@ -35,6 +35,7 @@ const NavBarMain = () => {
 
       <aside className={`mobile-menu ${isOpen ? 'open' : ''}`}>
         <button className="mobile-menu__close" onClick={toggleMenu}>✕</button>
+        <Link to="/" className="mobile-menu__link" onClick={toggleMenu}>Головна</Link>
         <Link to="/about-us" className="mobile-menu__link" onClick={toggleMenu}>Про Нас</Link>
         <Link to="/services" className="mobile-menu__link" onClick={toggleMenu}>Послуги</Link>
         <Link to="/objects" className="mobile-menu__link" onClick={toggleMenu}>Об'єкти</Link>

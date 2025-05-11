@@ -19,7 +19,11 @@
   
 
   @include on-Desctop {
-    width: 50%; 
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     
   }
 }
@@ -30,7 +34,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center; 
-
+ 
   &__content {
     width: 50%; 
     aspect-ratio: 1 / 1; 
@@ -62,30 +66,32 @@
 
 
 .left__content:nth-child(1) {
-  background-image: url(../../../public/Images/pexels-pixabay-261621.jpg);
+  background-image: url(../../../public/Images/pexels-christa-grover-977018-2121121.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 
 .left__content:nth-child(2) {
-  background-image: url(../../../public/Images/photo_5208461305072183638_y.jpg);
-  background-size: contain;
-
+  background-image: url(../../../public/Images/pexels-fotoaibe-1643383.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
 .left__content:nth-child(3) {
   
+ 
+  background-image: url(../../../public/Images/pexels-pixabay-271667.jpg);
   background-size: cover;
-  background-image: url(../../../public/Images/photo_5208461305072183644_y.jpg);
-  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
 .left__content:nth-child(4) {
- background-image: url(../../../public/Images/photo_5208461305072183645_y.jpg);
-  background-size: cover;
+ background-image: url(../../../public/Images/pexels-jvdm-1454805.jpg);
+ background-size: cover;
+ background-repeat: no-repeat;
   
 
 }
