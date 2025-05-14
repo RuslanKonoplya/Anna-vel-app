@@ -39,7 +39,7 @@ function FollowUs() {
 
 
 
-        <a href="#" target="_blank" 
+        <a href="https://www.tiktok.com/@annavel81?_t=ZM-8wM6eG6ty1m&_r=1" target="_blank" 
           rel="noopener noreferrer">
           <img src="/Images/vecteezy_tiktok-png-icon_16716450.png" alt="tik-tok" className='follow-us__img'
           target="_blank" 

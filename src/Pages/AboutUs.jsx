@@ -9,7 +9,7 @@ function AboutUs() {
   return (
     <>
       <NavBarMain />
-      <p>Сторінка з інформацією про нас</p>
+      <p>Інформація скоро з'явиться</p>
       <OurTeam/>
       
       <Footer />

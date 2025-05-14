@@ -1,0 +1,100 @@
+@import '../Utils/mixins.scss';
+
+
+.description {
+  
+  @include pading-inline;
+
+  text-align: center;
+
+
+  &__images{
+
+    @include on-Tablet{
+      margin-top: 30px;
+      padding-bottom: 30px;
+      
+    }
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    
+    gap: 20px;
+    
+    @include on-Tablet{
+      flex-direction: row;
+    }
+
+  }
+
+  
+
+  &__image{
+    width: 100%;
+    
+   aspect-ratio: 1 / 1;
+   object-fit: cover;
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+   @include on-Tablet{
+    max-width: 30%;
+   }
+  }
+}
+
+.description .content {
+  display: flex;
+  gap: 10px;
+  text-align: center;
+  flex-direction: column;
+  
+  
+  
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.description h1 {
+  font-size: 2.5rem;
+  
+  
+  text-align: center;
+}
+
+
+
+.description h2 {
+  font-size: 1.8rem;
+  margin-top: 60px;
+  
+ 
+  
+}
+
+.description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.description ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.description ul li {
+  background-color: #ecf0f1;
+  margin-bottom: 12px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  transition: transform 0.3s ease;
+
+  &:hover{
+    transform: scale(1.01);
+  }
+}
+
