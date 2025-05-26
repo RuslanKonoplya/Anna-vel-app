@@ -20,7 +20,7 @@ const [visibleHouse, setVisibleHouse] = useState([]);
   
 
   useEffect(() => {
-    fetch('https://anna-vell-backend-production.up.railway.app/houses')
+    fetch('https://anna-vell-backend.onrender.com/houses')
       .then(res => res.json())
       .then(data => {
         setHouses(data);
