@@ -9,7 +9,7 @@ export default function AdminFeedback() {
   useEffect(() => {
     const fetchFeedbacks = async () => {
       try {
-        const response = await fetch('https://anna-vell-backend-production.up.railway.app/api/feedback');
+        const response = await fetch('https://anna-vell-backend.onrender.com/api/feedback');
         if (response.ok) {
           const data = await response.json();
           setFeedbacks(data); // зберігаємо відгуки в стейт
@@ -29,7 +29,7 @@ export default function AdminFeedback() {
     const confirmDelete = window.confirm('Ви впевнені, що хочете видалити цей відгук?');
     if (confirmDelete) {
       try {
-        const response = await fetch(`https://anna-vell-backend-production.up.railway.app/api/feedback/${id}`, {
+        const response = await fetch(`https://anna-vell-backend.onrender.com/api/feedback/${id}`, {
           method: 'DELETE',
         });
         if (response.ok) {

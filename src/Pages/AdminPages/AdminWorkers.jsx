@@ -10,7 +10,7 @@ function AdminWorkers() {
   // Функція для отримання працівників
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('https://anna-vell-backend-production.up.railway.app/api/employees');
+      const response = await fetch('https://anna-vell-backend.onrender.com/api/employees');
       if (!response.ok) {
         throw new Error('Помилка при отриманні даних');
       }
@@ -27,7 +27,7 @@ function AdminWorkers() {
   const deleteEmployee = async (id) => {
     if (window.confirm("Ви впевнені, що хочете видалити цього працівника?")) {
       try {
-        const response = await fetch(`https://anna-vell-backend-production.up.railway.app/api/employees/${id}`, {
+        const response = await fetch(`https://anna-vell-backend.onrender.com/api/employees/${id}`, {
           method: 'DELETE',
         });
 

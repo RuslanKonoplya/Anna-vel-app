@@ -17,7 +17,7 @@ const PrivateRoute = ({ children }) => {
       }
 
       try {
-        const res = await fetch('https://anna-vell-backend-production.up.railway.app/api/check-auth', {
+        const res = await fetch('https://anna-vell-backend.onrender.com/api/check-auth', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,

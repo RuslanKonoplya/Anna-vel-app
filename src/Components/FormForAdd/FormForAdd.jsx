@@ -51,7 +51,7 @@ export default function FormForAdd() {
 
     try {
       const res = await fetch(
-        'https://anna-vell-backend-production.up.railway.app/houses',
+        'https://anna-vell-backend.onrender.com/houses',
         { method: 'POST', body: data }
       );
       if (!res.ok) throw new Error(`Status ${res.status}`);

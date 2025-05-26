@@ -15,7 +15,7 @@ function Section3() {
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    fetch('https://anna-vell-backend-production.up.railway.app/houses')
+    fetch('https://anna-vell-backend.onrender.com/houses')
       .then(res => res.json())
       .then(data => {
         setHouses(data);

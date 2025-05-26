@@ -11,7 +11,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://anna-vell-backend-production.up.railway.app/api/login', {
+      const res = await fetch('https://anna-vell-backend.onrender.com/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ login, password }),

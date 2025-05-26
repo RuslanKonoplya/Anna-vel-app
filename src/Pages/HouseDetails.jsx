@@ -14,7 +14,7 @@ function HouseDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://anna-vell-backend-production.up.railway.app/houses/${id}`)
+    fetch(`https://anna-vell-backend.onrender.com/houses/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error('Помилка при завантаженні');
         return res.json();
